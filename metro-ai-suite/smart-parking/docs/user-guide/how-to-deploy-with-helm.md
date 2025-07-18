@@ -1,10 +1,9 @@
 # How to Deploy with Helm
 
--   **Time to Complete:** 30 minutes
+This guide provides step-by-step instructions for deploying the Smart Parking sample application using Helm.
 
-## Get Started
+The estimated time to complete these steps is 30 minutes.
 
-Complete this guide to confirm that your setup is working correctly and try out workflows in the sample application.
 
 ## Prerequisites
 
@@ -12,31 +11,31 @@ Complete this guide to confirm that your setup is working correctly and try out 
 -  K8s installation on single or multi node must be done as pre-requisite to continue the following deployment. Note: The kubernetes cluster is set up with `kubeadm`, `kubectl` and `kubelet` packages on single and multi nodes with `v1.30.2`.
   Refer to tutorials such as <https://adamtheautomator.com/installing-kubernetes-on-ubuntu> and many other
   online tutorials to setup kubernetes cluster on the web with host OS as ubuntu 22.04.
-- For helm installation, refer to [helm website](https://helm.sh/docs/intro/install/)
+- For Helm installation, refer to [Helm website](https://helm.sh/docs/intro/install/)
 
 > **Note**
-> If Ubuntu Desktop is not installed on the target system, follow the instructions from Ubuntu to [install Ubuntu desktop](https://ubuntu.com/tutorials/install-ubuntu-desktop).
+> If Ubuntu Desktop is not installed on the target system, follow the instructions from Ubuntu to [install Ubuntu desktop](https://ubuntu.com/tutorials/install-ubuntu-desktop). Target system refers to the system where you are installing the application.
 
-## Download the helm chart
+## Step 1: Download the Helm chart
 
-Follow this procedure on the target system to install the package.
+Follow this procedure on the target system to install the package:
 
-1. Download helm chart with the following command
+1. Download Helm chart with the following command:
 
     `helm pull oci://registry-1.docker.io/intel/smart-parking --version 1.1.0`
 
-2. unzip the package using the following command
+2. Unzip the package using the following command:
 
     `tar xvf smart-parking-1.1.0.tgz`
     
-- Get into the helm directory
+3. Go to the Helm directory
 
     `cd smart-parking`
 
 
-## Configure and update the environment variables
+## Step 2: Configure and update the environment variables
 
-1. Update the below fields in `values.yaml` file in the helm chart
+1. Update the following fields in `values.yaml` file in the Helm chart:
 
     ``` sh
     HOST_IP: # replace localhost with system IP example: HOST_IP: 10.100.100.100
@@ -47,11 +46,11 @@ Follow this procedure on the target system to install the package.
         password: # example: password: mypassword
     ```
 
-## Deploy the application and Run multiple AI pipelines
+## Step 3: Deploy the application and run multiple AI pipelines
 
-Follow this procedure to run the sample application. In a typical deployment, multiple cameras deliver video streams that are connected to AI pipelines to improve the classification and recognition accuracy. The following demonstrates running multiple AI pipelines and visualization in the Grafana.
+Follow this procedure to run the sample application. In a typical deployment, multiple cameras deliver video streams are connected to AI pipelines to improve the classification and recognition accuracy. The following demonstrates running multiple AI pipelines and visualization in the Grafana dashboard.
 
-1. Deploy helm chart
+1. Deploy Helm chart
 
     ```sh
     helm install smart-parking . -n sp  --create-namespace
@@ -160,7 +159,7 @@ curl http://<HOST_IP>:30485/pipelines/user_defined_pipelines/yolov10_1_cpu -X PO
 }'
 ```
 
-4. View the Grafana and WebRTC streaming on `http://<HOST_IP>:30480`.
+4. View the Grafana dashboard and WebRTC streaming on `http://<HOST_IP>:30480`.
     - Log in with the following credentials:
         - **Username:** `admin`
         - **Password:** `admin`
@@ -172,7 +171,7 @@ curl http://<HOST_IP>:30485/pipelines/user_defined_pipelines/yolov10_1_cpu -X PO
 
 ## End the demonstration
 
-Follow this procedure to stop the sample application and end this demonstration.
+To stop the sample application and end this demonstration use the following commands:
 
 1. Stop the sample application with the following command that uninstalls the release smart-parking.
 
@@ -197,9 +196,9 @@ In this guide, you installed and validated Smart Parking sample application. You
 
 The following are options to help you resolve issues with the sample application.
 
-### Deploying with Intel GPU K8S Extension on ITEP
+### Deploying with Intel GPU K8S Extension on Intel® Tiber™ Edge Platform
 
-If you're deploying a GPU based pipeline (example: with VA-API elements like `vapostproc`, `vah264dec` etc., and/or with `device=GPU` in `gvadetect` in `config.json`) with Intel GPU k8s Extension on ITEP, ensure to set the below details in the file `helm/values.yaml` appropriately in order to utilize the underlying GPU.
+If you're deploying a GPU based pipeline (example: with VA-API elements like `vapostproc`, `vah264dec` etc., and/or with `device=GPU` in `gvadetect` in `config.json`) with Intel GPU k8s Extension on Intel® Tiber™ Edge Platform, ensure to set the following details in the file `helm/values.yaml` appropriately in order to utilize the underlying GPU.
 ```sh
 gpu:
   enabled: true
@@ -209,13 +208,13 @@ gpu:
 
 ### Deploying without Intel GPU K8S Extension
 
-If you're deploying a GPU based pipeline (example: with VA-API elements like `vapostproc`, `vah264dec` etc., and/or with `device=GPU` in `gvadetect` in `config.json`) without Intel GPU k8s Extension, ensure to set the below details in the file `helm/values.yaml` appropriately in order to utilize the underlying GPU.
+If you're deploying a GPU based pipeline (example: with VA-API elements like `vapostproc`, `vah264dec` etc., and/or with `device=GPU` in `gvadetect` in `config.json`) without Intel GPU k8s Extension, ensure to set the following details in the file `helm/values.yaml` appropriately in order to utilize the underlying GPU.
 ```sh
 privileged_access_required: true
 ```
 
 ### Error Logs
 
-View the container logs using this command.
+View the container logs using the following command:
 
          kubectl logs -f <pod_name> -n sp
