@@ -1,4 +1,4 @@
-# AI Tolling System Tutorial
+# Tutorial 1 - DLStreamer Pipeline Server
 
 <!--
 **Sample Description**: This tutorial demonstrates how to build an intelligent tolling system using edge AI technologies for real-time vehicle detection, license plate recognition, and vehicle attribute analysis.
@@ -29,7 +29,7 @@ By following this guide, you will learn how to:
 <!--
 **Architecture Image Placeholder**: Add architecture diagram showing the flow from video input through AI models to toll processing output
 -->
-![AI Tolling Sytem Diagram](_images/metro_app_arch.png)
+![AI Tolling Sytem Diagram](images/ai-tolling-system.svg)
 
 
 The AI Tolling system consists of several key components:
@@ -319,7 +319,7 @@ http://localhost/mediamtx/object_detection_1/
 
 For local testing, you can use: `http://localhost/mediamtx/object_detection_1/`
 
-![Vehicle Live Detection](_images/car_live_detection.jpg)
+![Vehicle Live Detection](images/car_live_detection.jpg)
 
 Expected results:
 - Vehicle detection accuracy > 90%
