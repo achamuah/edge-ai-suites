@@ -145,6 +145,8 @@ spec:
           value: "broker"
         - name: MQTT_PORT
           value: "1883"
+        - name: ZE_ENABLE_ALT_DRIVERS
+          value: "libze_intel_npu.so"
       volumes:
       - name: vol-pipeline-root-tmpfs0
         emptyDir: {}
