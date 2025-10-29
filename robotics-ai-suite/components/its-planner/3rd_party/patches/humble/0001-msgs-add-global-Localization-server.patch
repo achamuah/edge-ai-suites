@@ -4,28 +4,28 @@ Date: Tue, 24 Jun 2025 21:42:10 -0700
 Subject: [PATCH 1/2] msgs: add global Localization server
 
 ---
- nav2_msgs/CMakeLists.txt             | 1 +
- nav2_msgs/srv/GlobalLocalization.srv | 6 ++++++
+ /CMakeLists.txt             | 1 +
+ /srv/GlobalLocalization.srv | 6 ++++++
  2 files changed, 7 insertions(+)
- create mode 100644 nav2_msgs/srv/GlobalLocalization.srv
+ create mode 100644 /srv/GlobalLocalization.srv
 
-diff --git a/nav2_msgs/CMakeLists.txt b/nav2_msgs/CMakeLists.txt
+diff --git a/CMakeLists.txt b/CMakeLists.txt
 index b9895f07..ba04c19f 100644
---- a/nav2_msgs/CMakeLists.txt
-+++ b/nav2_msgs/CMakeLists.txt
-@@ -32,6 +32,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -37,6 +37,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
    "srv/LoadMap.srv"
    "srv/SaveMap.srv"
    "srv/SetInitialPose.srv"
 +  "srv/GlobalLocalization.srv"
+   "srv/SetRouteGraph.srv"
    "action/AssistedTeleop.action"
    "action/BackUp.action"
-   "action/ComputePathToPose.action"
-diff --git a/nav2_msgs/srv/GlobalLocalization.srv b/nav2_msgs/srv/GlobalLocalization.srv
+diff --git a/srv/GlobalLocalization.srv b/srv/GlobalLocalization.srv
 new file mode 100644
 index 00000000..2a4dd0e9
 --- /dev/null
-+++ b/nav2_msgs/srv/GlobalLocalization.srv
++++ b/srv/GlobalLocalization.srv
 @@ -0,0 +1,6 @@
 +float64[] weights
 +float64[] sigma
